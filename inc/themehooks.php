@@ -3,7 +3,7 @@
 /**
  * A class of methods using hooks in the theme.
  *
- * @package DocBlock
+ * @package Edge_Merger
  * @author Slushman <chris@slushman.com>
  */
 class edge_merger_Themehooks {

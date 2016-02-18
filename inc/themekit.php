@@ -3,7 +3,7 @@
 /**
  * A class of helpful theme functions
  *
- * @package DocBlock
+ * @package Edge_Merger
  * @author Slushman <chris@slushman.com>
  */
 class edge_merger_Themekit {

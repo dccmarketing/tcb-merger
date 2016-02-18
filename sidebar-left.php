@@ -2,7 +2,7 @@
 /**
  * The sidebar for the Sidrbar Content page template
  *
- * @package DocBlock
+ * @package Edge_Merger
  */
 
 if ( ! is_active_sidebar( 'sidebar-left' ) ) { return; }

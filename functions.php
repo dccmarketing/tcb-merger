@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Functions_File_Explained
  *
- * @package DocBlock
+ * @package Edge_Merger
  */
 
 if ( ! function_exists( 'edge_merger_setup' ) ) :

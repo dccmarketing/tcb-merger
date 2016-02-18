@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package DocBlock
+ * @package Edge_Merger
  */
 
 if ( ! function_exists( 'edge_merger_posted_on' ) ) :
