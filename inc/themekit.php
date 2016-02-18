@@ -285,7 +285,7 @@ class edge_merger_Themekit {
 
 		$return .= '<a href="tel:' . $formatted . '">';
 		$return .= '<span class="screen-reader-text">';
-		$return .= esc_html__( 'Call ', 'tcb-merger' ) . '</span>';
+		$return .= esc_html__( 'Call ', 'edge-merger' ) . '</span>';
 		$return .= $number . '</a>';
 
 		return $return;

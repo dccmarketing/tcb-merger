@@ -26,12 +26,12 @@ if ( ! function_exists( 'edge_merger_posted_on' ) ) :
 		);
 
 		$posted_on = sprintf(
-			esc_html_x( 'Posted on %s', 'post date', 'tcb-merger' ),
+			esc_html_x( 'Posted on %s', 'post date', 'edge-merger' ),
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
 		$byline = sprintf(
-			esc_html_x( 'by %s', 'post author', 'tcb-merger' ),
+			esc_html_x( 'by %s', 'post author', 'edge-merger' ),
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
@@ -52,18 +52,18 @@ if ( ! function_exists( 'edge_merger_entry_footer' ) ) :
 		if ( 'post' == get_post_type() ) {
 
 			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( esc_html__( ', ', 'tcb-merger' ) );
+			$categories_list = get_the_category_list( esc_html__( ', ', 'edge-merger' ) );
 			if ( $categories_list && edge_merger_categorized_blog() ) {
 
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'tcb-merger' ) . '</span>', $categories_list );  // WPCS: XSS OK.
+				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'edge-merger' ) . '</span>', $categories_list );  // WPCS: XSS OK.
 
 			}
 
 			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html__( ', ', 'tcb-merger' ) );
+			$tags_list = get_the_tag_list( '', esc_html__( ', ', 'edge-merger' ) );
 			if ( $tags_list ) {
 
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'tcb-merger' ) . '</span>', $tags_list );  // WPCS: XSS OK.
+				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'edge-merger' ) . '</span>', $tags_list );  // WPCS: XSS OK.
 
 			}
 
@@ -72,12 +72,12 @@ if ( ! function_exists( 'edge_merger_entry_footer' ) ) :
 		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 
 			echo '<span class="comments-link">';
-			comments_popup_link( esc_html__( 'Leave a comment', 'tcb-merger' ), esc_html__( '1 Comment', 'tcb-merger' ), esc_html__( '% Comments', 'tcb-merger' ) );
+			comments_popup_link( esc_html__( 'Leave a comment', 'edge-merger' ), esc_html__( '1 Comment', 'edge-merger' ), esc_html__( '% Comments', 'edge-merger' ) );
 			echo '</span>';
 
 		}
 
-		edit_post_link( esc_html__( 'Edit', 'tcb-merger' ), '<span class="edit-link">', '</span>' );
+		edit_post_link( esc_html__( 'Edit', 'edge-merger' ), '<span class="edit-link">', '</span>' );
 
 	} // edge_merger_entry_footer()
 endif;

@@ -21,7 +21,7 @@ if ( ! function_exists( 'edge_merger_setup' ) ) :
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
 		 */
-		load_theme_textdomain( 'tcb-merger', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'edge-merger', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -77,8 +77,8 @@ if ( ! function_exists( 'edge_merger_setup' ) ) :
 		 * Register Menus
 		 */
 		register_nav_menus( array(
-			'primary' => esc_html__( 'Primary', 'tcb-merger' ),
-			'social' => esc_html__( 'Social Links', 'tcb-merger' )
+			'primary' => esc_html__( 'Primary', 'edge-merger' ),
+			'social' => esc_html__( 'Social Links', 'edge-merger' )
 		) );
 
 	} // edge_merger_setup()

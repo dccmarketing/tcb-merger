@@ -148,7 +148,7 @@ class edge_merger_Themehooks {
 					$args['after'] 			= '</span>';
 					$args['before'] 		= '<span rel="v:child" typeof="v:Breadcrumb">';
 					$args['delimiter'] 		= '&nbsp;>&nbsp;';
-					$args['home'] 			= esc_html_x( 'Home', 'breadcrumb', 'tcb-merger' );
+					$args['home'] 			= esc_html_x( 'Home', 'breadcrumb', 'edge-merger' );
 					$args['wrap_after'] 	= '</span></span></nav>';
 					$args['wrap_before'] 	= '<nav class="woocommerce-breadcrumb" ' . ( is_single() ? 'itemprop="breadcrumb"' : '' ) . '><span xmlns:v="http://rdf.data-vocabulary.org/#"><span typeof="v:Breadcrumb">';
 
@@ -193,8 +193,8 @@ class edge_merger_Themehooks {
 
 		?><div class="wrap wrap-footer">
 			<div class="site-info">
-				<div class="copyright">&copy <?php echo date( 'Y' ); ?> <a href="<?php echo esc_url( get_admin_url(), 'tcb-merger' ); ?>"><?php echo get_bloginfo( 'name' ); ?></a></div>
-				<div class="credits"><?php printf( esc_html__( 'Site created by %1$s', 'tcb-merger' ), '<a href="https://dccmarketing.com/" rel="nofollow" target="_blank">DCC Marketing</a>' ); ?></div>
+				<div class="copyright">&copy <?php echo date( 'Y' ); ?> <a href="<?php echo esc_url( get_admin_url(), 'edge-merger' ); ?>"><?php echo get_bloginfo( 'name' ); ?></a></div>
+				<div class="credits"><?php printf( esc_html__( 'Site created by %1$s', 'edge-merger' ), '<a href="https://dccmarketing.com/" rel="nofollow" target="_blank">DCC Marketing</a>' ); ?></div>
 			</div><!-- .site-info -->
 		</div><!-- .wrap-footer --><?php
 
@@ -210,7 +210,7 @@ class edge_merger_Themehooks {
 	public function four_04_archives() {
 
 		/* translators: %1$s: smiley */
-		$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'tcb-merger' ), convert_smilies( ':)' ) ) . '</p>';
+		$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'edge-merger' ), convert_smilies( ':)' ) ) . '</p>';
 
 		the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
 
@@ -228,7 +228,7 @@ class edge_merger_Themehooks {
 		if ( ! edge_merger_categorized_blog() ) { return; }
 
 		?><div class="widget widget_categories">
-			<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'tcb-merger' ); ?></h2>
+			<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'edge-merger' ); ?></h2>
 			<ul><?php
 
 				wp_list_categories( array(
@@ -282,9 +282,9 @@ class edge_merger_Themehooks {
 		if ( ! is_404() ) { return; }
 
 		?><header class="page-header">
-			<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'tcb-merger' ); ?></h1>
+			<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'edge-merger' ); ?></h1>
 		</header><!-- .page-header -->
-		<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'tcb-merger' ); ?></p><?php
+		<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'edge-merger' ); ?></p><?php
 
 	} // four_04_title()
 
@@ -342,7 +342,7 @@ class edge_merger_Themehooks {
 	public function primary_menu() {
 
 		?><nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'tcb-merger' ); ?></button><?php
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'edge-merger' ); ?></button><?php
 
 				$args['menu_id'] 		= 'primary-menu';
 				$args['theme_location'] = 'primary';
@@ -365,7 +365,7 @@ class edge_merger_Themehooks {
 		?><header class="page-header">
 			<h1 class="page-title"><?php
 
-				printf( esc_html__( 'Search Results for: %s', 'tcb-merger' ), '<span>' . get_search_query() . '</span>' );
+				printf( esc_html__( 'Search Results for: %s', 'edge-merger' ), '<span>' . get_search_query() . '</span>' );
 
 			?></h1>
 		</header><!-- .page-header --><?php
@@ -464,7 +464,7 @@ class edge_merger_Themehooks {
 	 */
 	public function skip_link() {
 
-		?><a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'tcb-merger' ); ?></a><?php
+		?><a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'edge-merger' ); ?></a><?php
 
 	} // skip_link()
 

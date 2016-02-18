@@ -73,8 +73,8 @@ class edge_merger_Actions_and_Filters {
 	 */
 	public function add_mime_types( $post_mime_types ) {
 
-	    $post_mime_types['application/pdf'] = array( esc_html__( 'PDFs', 'tcb-merger' ), esc_html__( 'Manage PDFs', 'tcb-merger' ), _n_noop( 'PDF <span class="count">(%s)</span>', 'PDFs <span class="count">(%s)</span>' ) );
-	    $post_mime_types['text/x-vcard'] 	= array( esc_html__( 'vCards', 'tcb-merger' ), esc_html__( 'Manage vCards', 'tcb-merger' ), _n_noop( 'vCard <span class="count">(%s)</span>', 'vCards <span class="count">(%s)</span>' ) );
+	    $post_mime_types['application/pdf'] = array( esc_html__( 'PDFs', 'edge-merger' ), esc_html__( 'Manage PDFs', 'edge-merger' ), _n_noop( 'PDF <span class="count">(%s)</span>', 'PDFs <span class="count">(%s)</span>' ) );
+	    $post_mime_types['text/x-vcard'] 	= array( esc_html__( 'vCards', 'edge-merger' ), esc_html__( 'Manage vCards', 'edge-merger' ), _n_noop( 'vCard <span class="count">(%s)</span>', 'vCards <span class="count">(%s)</span>' ) );
 
 	    return $post_mime_types;
 
@@ -195,9 +195,9 @@ class edge_merger_Actions_and_Filters {
 		global $post;
 
 		$return = sprintf( '... <a class="moretag read-more" href="%s">', esc_url( get_permalink( $post->ID ) ) );
-		$return .= esc_html__( 'Read more', 'tcb-merger' );
+		$return .= esc_html__( 'Read more', 'edge-merger' );
 		$return .= '<span class="screen-reader-text">';
-		$return .= sprintf( esc_html__( ' about %s', 'tcb-merger' ), $post->post_title );
+		$return .= sprintf( esc_html__( ' about %s', 'edge-merger' ), $post->post_title );
 		$return .= '</span></a>';
 
 		return $return;
@@ -213,7 +213,7 @@ class edge_merger_Actions_and_Filters {
 
 		$return 	= '';
 		$families 	= '';
-		$fonts[] 	= array( 'font' => 'Oxygen', 'weights' => '400,700', 'translate' => esc_html_x( 'on', 'Oxygen font: on or off', 'tcb-merger' ) );
+		$fonts[] 	= array( 'font' => 'Oxygen', 'weights' => '400,700', 'translate' => esc_html_x( 'on', 'Oxygen font: on or off', 'edge-merger' ) );
 
 		foreach ( $fonts as $font ) {
 
@@ -332,7 +332,7 @@ class edge_merger_Actions_and_Filters {
 
 		} else {
 
-			echo '<span class="name-template">' . esc_html( 'Default', 'tcb-merger' ) . '</span>';
+			echo '<span class="name-template">' . esc_html( 'Default', 'edge-merger' ) . '</span>';
 
 		}
 
@@ -347,7 +347,7 @@ class edge_merger_Actions_and_Filters {
 	 */
 	public function page_template_column_head( $defaults ) {
 
-		$defaults['page_template'] = esc_html( 'Page Template', 'tcb-merger' );
+		$defaults['page_template'] = esc_html( 'Page Template', 'edge-merger' );
 
 	    return $defaults;
 
@@ -451,7 +451,7 @@ class edge_merger_Actions_and_Filters {
 	function widgets_init() {
 
 		register_sidebar( array(
-			'name'          => esc_html__( 'Sidebar', 'tcb-merger' ),
+			'name'          => esc_html__( 'Sidebar', 'edge-merger' ),
 			'id'            => 'sidebar-1',
 			'description'   => '',
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
