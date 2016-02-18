@@ -1,6 +1,6 @@
 <?php
 /**
- * Replace With Theme Name Customizer
+ * Edge Merger Customizer
  *
  * Contains methods for customizing the theme customization screen.
  *
@@ -38,7 +38,7 @@ function edge_merger_register_panels( $wp_customize ) {
 	$wp_customize->add_panel( 'theme_options',
 		array(
 			'capability'  		=> 'edit_theme_options',
-			'description'  		=> esc_html__( 'Options for Replace With Theme Name', 'edge-merger' ),
+			'description'  		=> esc_html__( 'Options for Edge Merger', 'edge-merger' ),
 			'priority'  		=> 10,
 			'theme_supports'  	=> '',
 			'title'  			=> esc_html__( 'Theme Options', 'edge-merger' ),
@@ -50,7 +50,7 @@ function edge_merger_register_panels( $wp_customize ) {
 	$wp_customize->add_panel( 'theme_options',
 		array(
 			'capability'  		=> 'edit_theme_options',
-			'description'  		=> esc_html__( 'Options for Replace With Theme Name', 'edge-merger' ),
+			'description'  		=> esc_html__( 'Options for Edge Merger', 'edge-merger' ),
 			'priority'  		=> 10,
 			'theme_supports'  	=> '',
 			'title'  			=> esc_html__( 'Theme Options', 'edge-merger' ),
