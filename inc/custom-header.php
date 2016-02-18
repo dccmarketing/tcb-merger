@@ -21,33 +21,33 @@
  *
  * @uses 	add_theme_support()
  * @uses 	apply_filters()
- * @uses 	function_names_header_style()
+ * @uses 	edge_merger_header_style()
  */
-function function_names_custom_header_setup() {
+function edge_merger_custom_header_setup() {
 
-	add_theme_support( 'custom-header', apply_filters( 'function_names_custom_header_args', array(
+	add_theme_support( 'custom-header', apply_filters( 'edge_merger_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'function_names_header_style'
+		'wp-head-callback'       => 'edge_merger_header_style'
 	) ) );
 
-} // function_names_custom_header_setup()
+} // edge_merger_custom_header_setup()
 
-add_action( 'after_setup_theme', 'function_names_custom_header_setup' );
+add_action( 'after_setup_theme', 'edge_merger_custom_header_setup' );
 
-if ( ! function_exists( 'function_names_header_style' ) ) :
+if ( ! function_exists( 'edge_merger_header_style' ) ) :
 
 	/**
 	 * Styles the header image and text displayed on the blog
 	 *
-	 * @see function_names_custom_header_setup().
+	 * @see edge_merger_custom_header_setup().
 	 *
 	 * @uses 	get_header_textcolor()
 	 */
-	function function_names_header_style() {
+	function edge_merger_header_style() {
 
 		$header_text_color = get_header_textcolor();
 
@@ -79,8 +79,8 @@ if ( ! function_exists( 'function_names_header_style' ) ) :
 
 		?></style><?php
 
-	} // function_names_header_style()
+	} // edge_merger_header_style()
 
-endif; // function_names_header_style
+endif; // edge_merger_header_style
 
 

@@ -7,7 +7,7 @@
  * @package DocBlock
  */
 
-if ( ! function_exists( 'function_names_setup' ) ) :
+if ( ! function_exists( 'edge_merger_setup' ) ) :
 
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -16,7 +16,7 @@ if ( ! function_exists( 'function_names_setup' ) ) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function function_names_setup() {
+	function edge_merger_setup() {
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
@@ -63,7 +63,7 @@ if ( ! function_exists( 'function_names_setup' ) ) :
 		) );*/
 
 		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'function_names_custom_background_args', array(
+		add_theme_support( 'custom-background', apply_filters( 'edge_merger_custom_background_args', array(
 			'default-color' => 'ffffff',
 			'default-image' => '',
 		) ) );
@@ -81,11 +81,11 @@ if ( ! function_exists( 'function_names_setup' ) ) :
 			'social' => esc_html__( 'Social Links', 'tcb-merger' )
 		) );
 
-	} // function_names_setup()
+	} // edge_merger_setup()
 
-endif; // function_names_setup
+endif; // edge_merger_setup
 
-add_action( 'after_setup_theme', 'function_names_setup' );
+add_action( 'after_setup_theme', 'edge_merger_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -94,13 +94,13 @@ add_action( 'after_setup_theme', 'function_names_setup' );
  *
  * @global 		int 		$content_width
  */
-function function_names_content_width() {
+function edge_merger_content_width() {
 
-	$GLOBALS['content_width'] = apply_filters( 'function_names_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'edge_merger_content_width', 640 );
 
-} // function_names_content_width()
+} // edge_merger_content_width()
 
-add_action( 'after_setup_theme', 'function_names_content_width', 0 );
+add_action( 'after_setup_theme', 'edge_merger_content_width', 0 );
 
 /**
  * Implement the Custom Header feature.

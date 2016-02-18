@@ -10,18 +10,18 @@
  */
 
 // Register panels, sections, and controls
-add_action( 'customize_register', 'function_names_register_panels' );
-add_action( 'customize_register', 'function_names_register_sections' );
-add_action( 'customize_register', 'function_names_register_fields' );
+add_action( 'customize_register', 'edge_merger_register_panels' );
+add_action( 'customize_register', 'edge_merger_register_sections' );
+add_action( 'customize_register', 'edge_merger_register_fields' );
 
 // Output custom CSS to live site
-add_action( 'wp_head', 'function_names_header_output' );
+add_action( 'wp_head', 'edge_merger_header_output' );
 
 // Enqueue live preview javascript in Theme Customizer admin screen
-add_action( 'customize_preview_init', 'function_names_live_preview' );
+add_action( 'customize_preview_init', 'edge_merger_live_preview' );
 
 // Enqueue scripts for the customizer controls
-add_action( 'customize_controls_enqueue_scripts', 'function_names_control_scripts' );
+add_action( 'customize_controls_enqueue_scripts', 'edge_merger_control_scripts' );
 
 /**
  * Registers custom panels for the Customizer
@@ -32,7 +32,7 @@ add_action( 'customize_controls_enqueue_scripts', 'function_names_control_script
  *
  * @param 		WP_Customize_Manager 		$wp_customize 		Theme Customizer object.
  */
-function function_names_register_panels( $wp_customize ) {
+function edge_merger_register_panels( $wp_customize ) {
 
 	// Theme Options Panel
 	$wp_customize->add_panel( 'theme_options',
@@ -58,7 +58,7 @@ function function_names_register_panels( $wp_customize ) {
 	);
 	*/
 
-} // function_names_register_panels()
+} // edge_merger_register_panels()
 
 /**
  * Registers custom sections for the Customizer
@@ -82,7 +82,7 @@ function function_names_register_panels( $wp_customize ) {
  *
  * @param 		WP_Customize_Manager 		$wp_customize 		Theme Customizer object.
  */
-function function_names_register_sections( $wp_customize ) {
+function edge_merger_register_sections( $wp_customize ) {
 
 
 
@@ -99,7 +99,7 @@ function function_names_register_sections( $wp_customize ) {
 	);
 	*/
 
-} // function_names_register_sections()
+} // edge_merger_register_sections()
 
 /**
  * Registers controls/fields for the Customizer
@@ -117,7 +117,7 @@ function function_names_register_sections( $wp_customize ) {
  *
  * @param 		WP_Customize_Manager 		$wp_customize 		Theme Customizer object.
  */
-function function_names_register_fields( $wp_customize ) {
+function edge_merger_register_fields( $wp_customize ) {
 
 	// Enable live preview JS for default fields
 	$wp_customize->get_setting( 'blogname' )->transport 		= 'postMessage';
@@ -558,7 +558,7 @@ function function_names_register_fields( $wp_customize ) {
 	$wp_customize->add_control(
 		'country',
 		array(
-			'choices' 		=> function_names_country_list(),
+			'choices' 		=> edge_merger_country_list(),
 			'description' 	=> esc_html__( '', 'tcb-merger' ),
 			'label' 		=> esc_html__( 'Country', 'tcb-merger' ),
 			'priority' 		=> 250,
@@ -727,7 +727,7 @@ function function_names_register_fields( $wp_customize ) {
 
 	*/
 
-} // function_names_register_fields()
+} // edge_merger_register_fields()
 
 /**
  * This will generate a line of CSS for use in header output. If the setting
@@ -745,7 +745,7 @@ function function_names_register_fields( $wp_customize ) {
  *
  * @return 		string 						Returns a single line of CSS with selectors and a property.
  */
-function function_names_generate_css( $selector, $style, $mod_name, $prefix = '', $postfix = '', $echo = true ) {
+function edge_merger_generate_css( $selector, $style, $mod_name, $prefix = '', $postfix = '', $echo = true ) {
 
 	$return = '';
 	$mod 	= get_theme_mod( $mod_name );
@@ -768,7 +768,7 @@ function function_names_generate_css( $selector, $style, $mod_name, $prefix = ''
 
 	return $return;
 
-} // function_names_generate_css()
+} // edge_merger_generate_css()
 
 /**
  * This will output the custom WordPress settings to the live theme's WP head.
@@ -779,21 +779,21 @@ function function_names_generate_css( $selector, $style, $mod_name, $prefix = ''
  * @see 		add_action( 'wp_head', $func )
  * @since 		1.0.0
  */
-function function_names_header_output() {
+function edge_merger_header_output() {
 
 	?><!-- Customizer CSS -->
 	<style type="text/css"><?php
 
 		// pattern:
-		// function_names_generate_css( 'selector', 'style', 'mod_name', 'prefix', 'postfix', true );
+		// edge_merger_generate_css( 'selector', 'style', 'mod_name', 'prefix', 'postfix', true );
 		//
 		// background-image example:
-		// function_names_generate_css( '.class', 'background-image', 'background_image_example', 'url(', ')' );
+		// edge_merger_generate_css( '.class', 'background-image', 'background_image_example', 'url(', ')' );
 
 
 	?></style><!-- Customizer CSS --><?php
 
-} // function_names_header_output()
+} // edge_merger_header_output()
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
@@ -804,11 +804,11 @@ function function_names_header_output() {
  * @see 		add_action( 'customize_preview_init', $func )
  * @since 		1.0.0
  */
-function function_names_live_preview() {
+function edge_merger_live_preview() {
 
-	wp_enqueue_script( 'function_names_customizer', get_template_directory_uri() . '/js/customizer.min.js', array( 'jquery', 'customize-preview' ), '', true );
+	wp_enqueue_script( 'edge_merger_customizer', get_template_directory_uri() . '/js/customizer.min.js', array( 'jquery', 'customize-preview' ), '', true );
 
-} // function_names_live_preview()
+} // edge_merger_live_preview()
 
 /**
  * Used by customizer controls, mostly for active callbacks.
@@ -819,11 +819,11 @@ function function_names_live_preview() {
  * @see 		add_action( 'customize_preview_init', $func )
  * @since 		1.0.0
  */
-function function_names_control_scripts() {
+function edge_merger_control_scripts() {
 
-	wp_enqueue_script( 'function_names_customizer_controls', get_template_directory_uri() . '/js/customizer-controls.min.js', array( 'jquery', 'customize-controls' ), false, true );
+	wp_enqueue_script( 'edge_merger_customizer_controls', get_template_directory_uri() . '/js/customizer-controls.min.js', array( 'jquery', 'customize-controls' ), false, true );
 
-} // function_names_control_scripts()
+} // edge_merger_control_scripts()
 
 /**
  * Returns TRUE based on which link type is selected, otherwise FALSE
@@ -831,7 +831,7 @@ function function_names_control_scripts() {
  * @param 	object 		$control 			The control object
  * @return 	bool 							TRUE if conditions are met, otherwise FALSE
  */
-function function_names_states_of_country_callback( $control ) {
+function edge_merger_states_of_country_callback( $control ) {
 
 	$country_setting = $control->manager->get_setting('country')->value();
 
@@ -841,11 +841,11 @@ function function_names_states_of_country_callback( $control ) {
 	if ( 'us_state' === $control->id && 'US' === $country_setting ) { return true; }
 	if ( 'canada_state' === $control->id && 'CA' === $country_setting ) { return true; }
 	if ( 'australia_state' === $control->id && 'AU' === $country_setting ) { return true; }
-	if ( 'default_state' === $control->id && ! function_names_custom_countries( $country_setting ) ) { return true; }
+	if ( 'default_state' === $control->id && ! edge_merger_custom_countries( $country_setting ) ) { return true; }
 
 	return false;
 
-} // function_names_states_of_country_callback()
+} // edge_merger_states_of_country_callback()
 
 /**
  * Returns true if a country has a custom select menu
@@ -854,13 +854,13 @@ function function_names_states_of_country_callback( $control ) {
  *
  * @return 		bool 							TRUE if the code is in the array, FALSE otherwise
  */
-function function_names_custom_countries( $country ) {
+function edge_merger_custom_countries( $country ) {
 
 	$countries = array( 'US', 'CA', 'AU' );
 
 	return in_array( $country, $countries );
 
-} // function_names_custom_countries()
+} // edge_merger_custom_countries()
 
 
 /**
@@ -870,7 +870,7 @@ function function_names_custom_countries( $country ) {
  *
  * @return 		array|string 				Array of countries or a single country name
  */
-function function_names_country_list( $country = '' ) {
+function edge_merger_country_list( $country = '' ) {
 
 	$countries = array();
 
@@ -1139,5 +1139,5 @@ function function_names_country_list( $country = '' ) {
 
 	return $countries;
 
-} // function_names_country_list()
+} // edge_merger_country_list()
 
