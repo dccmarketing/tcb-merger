@@ -42,6 +42,24 @@
 		} );
 	} );
 
+	wp.customize( 'arrow1_link_text', function( value ) {
+		value.bind( function( to ) {
+			$( '#arrow1_text' ).text( to );
+		} );
+	} );
+
+	wp.customize( 'arrow2_link_text', function( value ) {
+		value.bind( function( to ) {
+			$( '#arrow2_text' ).text( to );
+		} );
+	} );
+
+	wp.customize( 'bold_content', function( value ) {
+		value.bind( function( to ) {
+			$( '.bold-content' ).text( to );
+		} );
+	} );
+
 
 
 /*

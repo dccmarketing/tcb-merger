@@ -25,36 +25,36 @@ class edge_merger_Themehooks {
 		add_action( 'tha_header_top', 					array( $this, 'header_wrap_start' ), 10 );
 		add_action( 'tha_header_top', 					array( $this, 'site_branding_start' ), 15 );
 
-		add_action( 'edge_merger_header_content', 	array( $this, 'site_title' ), 10 );
-		add_action( 'edge_merger_header_content', 	array( $this, 'site_description' ), 15 );
+		add_action( 'edge_merger_header_content', 		array( $this, 'site_title' ), 10 );
+		add_action( 'edge_merger_header_content', 		array( $this, 'merged_logos' ), 15 );
 
 		add_action( 'tha_header_bottom', 				array( $this, 'site_branding_end' ), 85 );
 		add_action( 'tha_header_bottom', 				array( $this, 'header_wrap_end' ), 90 );
-		add_action( 'tha_header_bottom', 				array( $this, 'primary_menu' ), 95 );
 
 		add_action( 'tha_body_top', 					array( $this, 'analytics_code' ), 10 );
 		add_action( 'tha_body_top', 					array( $this, 'add_hidden_search' ), 15 );
 		add_action( 'tha_body_top', 					array( $this, 'skip_link' ), 20 );
 
-		add_action( 'tha_content_while_before', 		array( $this, 'archive_title' ) );
-		add_action( 'tha_content_while_before', 		array( $this, 'single_post_title' ) );
-		add_action( 'tha_content_while_before', 		array( $this, 'search_title' ) );
+		add_action( 'entry_content', 					array( $this, 'logo2' ), 10 );
+		add_action( 'entry_content', 					array( $this, 'bold_content' ), 15, 1 );
+		//add_action( 'entry_content', 					array( $this, 'pen_spacer' ), 20 );
+		add_action( 'entry_content', 					array( $this, 'page_content' ), 25, 1 );
+		add_action( 'entry_content', 					array( $this, 'signature' ), 30 );
 
-		add_action( 'tha_content_while_after', 			array( $this, 'posts_nav' ) );
+		//add_action( 'entry_buttons', 					array( $this, 'banking_link' ), 10, 1 );
+		//add_action( 'entry_buttons', 					array( $this, 'tcb_link' ), 15, 1 );
+		add_action( 'entry_buttons', 					array( $this, 'arrow1' ), 10, 1 );
+		add_action( 'entry_buttons', 					array( $this, 'arrow2' ), 15, 1 );
 
-		add_action( 'edge_merger_footer_content', 	array( $this, 'footer_content' ) );
+		add_action( 'edge_merger_footer_content', 		array( $this, 'footer_content' ) );
 
-		add_action( 'tha_content_top', 					array( $this, 'breadcrumbs' ) );
+		add_action( 'edge_merger_404_before', 			array( $this, 'four_04_title' ), 10 );
 
-		add_action( 'tha_entry_after', 					array( $this, 'comments' ), 10 );
-
-		add_action( 'edge_merger_404_before', 		array( $this, 'four_04_title' ), 10 );
-
-		add_action( 'edge_merger_404_content', 		array( $this, 'add_search' ), 10 );
-		add_action( 'edge_merger_404_content', 		array( $this, 'four_04_posts_widget' ), 15 );
-		add_action( 'edge_merger_404_content', 		array( $this, 'four_04_categories' ), 20 );
-		add_action( 'edge_merger_404_content', 		array( $this, 'four_04_archives' ), 25 );
-		add_action( 'edge_merger_404_content', 		array( $this, 'four_04_tag_cloud' ), 30 );
+		add_action( 'edge_merger_404_content', 			array( $this, 'add_search' ), 10 );
+		add_action( 'edge_merger_404_content', 			array( $this, 'four_04_posts_widget' ), 15 );
+		add_action( 'edge_merger_404_content', 			array( $this, 'four_04_categories' ), 20 );
+		add_action( 'edge_merger_404_content', 			array( $this, 'four_04_archives' ), 25 );
+		add_action( 'edge_merger_404_content', 			array( $this, 'four_04_tag_cloud' ), 30 );
 
 	} // loader()
 
@@ -130,57 +130,69 @@ class edge_merger_Themehooks {
 	} // archive_title()
 
 	/**
-	 * Returns the appropriate breadcrumbs.
+	 * Adds the TCB arrow link
 	 *
-	 * @hooked		edge_merger_wrap_content
+	 * @param 		array 		$fields 			The ACF fields
 	 *
-	 * @return 		mixed 				WooCommerce breadcrumbs, then Yoast breadcrumbs
+	 * @return 		mixed 							HTML markup for the TCB arrow
 	 */
-	public function breadcrumbs() {
+	public function arrow1( $fields ) {
 
-		if ( is_front_page() ) { return; }
+		if ( ! is_front_page() ) { return; }
 
-		?><div class="breadcrumbs">
-			<div class="wrap-crumbs"><?php
+		if ( ! empty( $fields['arrow1_link_text'] ) ) {
 
-				if ( function_exists( 'woocommerce_breadcrumb' ) ) {
+			?><div class="btn">
+				<a href="<?php echo esc_url( $fields['arrow1_url'] ); ?>" id="arrow1_text" target="_blank"><?php
 
-					$args['after'] 			= '</span>';
-					$args['before'] 		= '<span rel="v:child" typeof="v:Breadcrumb">';
-					$args['delimiter'] 		= '&nbsp;>&nbsp;';
-					$args['home'] 			= esc_html_x( 'Home', 'breadcrumb', 'edge-merger' );
-					$args['wrap_after'] 	= '</span></span></nav>';
-					$args['wrap_before'] 	= '<nav class="woocommerce-breadcrumb" ' . ( is_single() ? 'itemprop="breadcrumb"' : '' ) . '><span xmlns:v="http://rdf.data-vocabulary.org/#"><span typeof="v:Breadcrumb">';
+					esc_html_e( $fields['arrow1_link_text'] );
 
-					woocommerce_breadcrumb( $args );
+				?><span class="dashicons dashicons-arrow-right"></span></a>
+			</div><?php
 
-				} elseif ( function_exists( 'yoast_breadcrumb' ) ) {
+		}
 
-					yoast_breadcrumb();
-
-				}
-
-			?></div><!-- .wrap-crumbs -->
-		</div><!-- .breadcrumbs --><?php
-
-	} // breadcrumbs()
+	} // arrow1()
 
 	/**
-	 * The comments markup
+	 * Adds the TCB arrow link
 	 *
-	 * If comments are open or we have at least one comment, load up the comment template.
+	 * @param 		array 		$fields 			The ACF fields
 	 *
-	 * @hooked 		tha_entry_after 		10
-	 *
-	 * @return 		mixed 					The comments markup
+	 * @return 		mixed 							HTML markup for the TCB arrow
 	 */
-	public function comments() {
+	public function arrow2( $fields ) {
 
-		if ( ! comments_open() || get_comments_number() <= 0 ) { return; }
+		if ( ! is_front_page() ) { return; }
 
-		comments_template();
+		if ( ! empty( $fields['arrow2_link_text'] ) ) {
 
-	} // comments()
+			?><div class="btn">
+				<a href="<?php echo esc_url( $fields['arrow2_url'] ); ?>" id="arrow_text" target="_blank"><?php
+
+					esc_html_e( $fields['arrow2_link_text'] );
+
+				?><span class="dashicons dashicons-arrow-right"></span></a>
+			</div><?php
+
+		}
+
+	} // arrow2()
+
+	/**
+	 * Adds the bold content block
+	 *
+	 * @return 		mixed 			HTML markup
+	 */
+	public function bold_content( $fields ) {
+
+		?><div class="bold-content"><?php
+
+			echo apply_filters( 'the_content', $fields['bold_content'] );
+
+		?></div><!-- .bold-content --><?php
+
+	} // bold_content()
 
 	/**
 	 * Adds the copyright and credits to the footer content.
@@ -191,11 +203,52 @@ class edge_merger_Themehooks {
 	 */
 	public function footer_content() {
 
+		if ( ! is_front_page() ) { return; }
+
 		?><div class="wrap wrap-footer">
-			<div class="site-info">
-				<div class="copyright">&copy <?php echo date( 'Y' ); ?> <a href="<?php echo esc_url( get_admin_url(), 'edge-merger' ); ?>"><?php echo get_bloginfo( 'name' ); ?></a></div>
-				<div class="credits"><?php printf( esc_html__( 'Site created by %1$s', 'edge-merger' ), '<a href="https://dccmarketing.com/" rel="nofollow" target="_blank">DCC Marketing</a>' ); ?></div>
-			</div><!-- .site-info -->
+			<div class="container row">
+				<div class="fdic">
+					<img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/EHL-and-FDIC-Logos-mini.png' ) ?>">
+				</div>
+				<div class="col">
+					<div class="row addresses">
+						<div>
+							#10 Terra Verde<br>
+							Edwardsville, IL 62025<br>
+							Phone: <a href="tel:6186590991">(618) 659-0991</a><br>
+							Fax: (618) 659-0768
+						</div>
+						<div>
+							1604 West Morton Avenue<br>
+							Jacksonville, IL 62650<br>
+							Phone: <a href="tel:2172430660">(217) 243-0660</a><br>
+							Fax: (217) 245-7057
+						</div>
+						<div>
+							203 S. Miller St.<br>
+							Waverly, IL 62692<br>
+							Phone: <a href="tel:2174353000">(217) 435-3000</a><br>
+							Fax: (217) 435-3333
+						</div>
+						<div>
+							300 Third Avenue North<br>
+							White Hall, IL 62092<br>
+							Phone: <a href="tel:2173742233">(217) 374-2233</a><br>
+							Fax: (217) 374-6728
+						</div>
+					</div>
+					<div class="site-info">
+						<p>&copy <?php echo date( 'Y' ); ?>  Town and Country Financial Corporation. All Rights Reserved.<br>
+						An Illinois State chartered banking organization.<br>
+						<a href="<?php echo esc_url( 'http://townandcountrybank.com/sites/default/files/u14/December2013Final.pdf' ); ?>" target="_blank">Financial Privacy Disclosure</a> | <a href="<?php echo esc_url( 'http://townandcountrybank.com/webform/financial-privacy-opt-out-form' ); ?>" target="_blank">Financial Privacy Opt-Out Form</a> | <a href="<?php echo esc_url( 'http://townandcountrybank.com/disclosures' ); ?>" target="_blank">Other Disclosures</a></p>
+
+						<p>Town and Country Bank is regulated by the Federal Reserve Bank of Chicago. For accolades or complaints, please contact the Federal Reserve Bank directly. Please also send us a copy to: Customer Relations Officer, 3601 Wabash Ave. Springfield, Illinois, 62711.</p>
+						<p>If there is no sensitive customer information you can send to the following email address: <a href="mailto:customerrelations@townandcountrybank.com">customerrelations@townandcountrybank.com</a></p>
+						<p>Please note that Investments are not a deposit, not FDIC Insured, not insured by any federal government agency, not guaranteed by the bank and may go down in value.</p>
+						<p>Questions? Call <a href="tel:8667703100">866.770.3100</a> to reach our Solution Center to be connected to any of our branches.</p>
+					</div><!-- .site-info -->
+				</div>
+			</div><!-- .container -->
 		</div><!-- .wrap-footer --><?php
 
 	} // footer_content()
@@ -315,43 +368,54 @@ class edge_merger_Themehooks {
 	} // header_wrap_start()
 
 	/**
-	 * Adds the post navigation to the archive pages
+	 * Adds the second logo markup
 	 *
-	 * @hooked 		tha_content_while_after
-	 *
-	 * @return 		mixed 							The posts navigation
+	 * @return 		mixed 		HTML markup
 	 */
-	public function posts_nav() {
+	public function logo2() {
 
-		if (
-			! is_home()
-			|| ! is_archive()
-		) { return; }
+		?><img class="logo2" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/logo2.png' ); ?>" alt="logo2" width="203" height="75" /><?php
 
-		the_posts_navigation();
-
-	} // posts_nav()
+	} // logo2()
 
 	/**
-	 * Adds the primary menu
+	 * Logos of all merged banks
 	 *
-	 * @hooked 		tha_header_bottom 		95
-	 *
-	 * @return 		mixed 					The primary menu markup
+	 * @return 		mixed 			HTML markup
 	 */
-	public function primary_menu() {
+	public function merged_logos() {
 
-		?><nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'edge-merger' ); ?></button><?php
+		?><p class="merged-logos">
+			<img class="merged" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/merged.jpg' ); ?>" alt="Premier Bank and The EDGE Bank Logos" />
+		</p><?php
 
-				$args['menu_id'] 		= 'primary-menu';
-				$args['theme_location'] = 'primary';
+	} // merged_logos()
 
-				wp_nav_menu( $args );
+	/**
+	 * Adds the page content
+	 *
+	 * @return 		mixed 		HTML markup
+	 */
+	public function page_content( $fields ) {
 
-		?></nav><!-- #site-navigation --><?php
+		?><div class="regular-content"><?php
 
-	} // primary_menu()
+			the_content();
+
+		?></div><!-- .regular-content --><?php
+
+	} // page_content()
+
+	/**
+	 * Adds the pen spacer
+	 *
+	 * @return 		mixed 		HTML markup
+	 */
+	public function pen_spacer() {
+
+		?><img class="pen spacer alignright" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/spacer.gif' ); ?>" alt="spacer" /><?php
+
+	} // pen_spacer()
 
 	/**
 	 * The search title markup
@@ -362,6 +426,8 @@ class edge_merger_Themehooks {
 	 */
 	public function search_title() {
 
+		if ( ! is_search() ) { return; }
+
 		?><header class="page-header">
 			<h1 class="page-title"><?php
 
@@ -371,6 +437,25 @@ class edge_merger_Themehooks {
 		</header><!-- .page-header --><?php
 
 	} // search_title()
+
+	/**
+	 * Adds the Barlett letter signature
+	 *
+	 * @return 		mixed 		HTML markup
+	 */
+	public function signature() {
+
+		if ( ! is_front_page() ) { return; }
+
+		?><p>
+			<img class="bartlett alignleft" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/Micah-BartlettPhoto.png' ); ?>" alt="Micah-BartlettPhoto" /><?php
+			esc_html_e( 'All the best,', 'edge-merger' ); ?><br />
+			<img class="signature alignnone wp-image-18" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/images/MicahSignature.png' ); ?>" alt="MicahSignature" /><br /><?php
+			esc_html_e( 'Micah R. Bartlett', 'edge-merger' ); ?><br>
+			<em><?php esc_html_e( 'President and CEO', 'edge-merger' ); ?></em>
+		</p><?php
+
+	} // signature()
 
 	/**
 	 * Adds the single post title to the index
@@ -443,13 +528,15 @@ class edge_merger_Themehooks {
 	 */
 	public function site_title() {
 
+		$logo = get_stylesheet_directory_uri() . '/images/logo.jpg';
+
 		if ( is_front_page() && is_home() ) {
 
-			?><h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1><?php
+			?><h1 class="site-title"><a href="<?php echo esc_url( 'http://townandcountrybank.com/' ); ?>" rel="home" target="_blank"><img src="<?php echo esc_url( $logo ); ?>"><span class="screen-reader-text"><?php bloginfo( 'name' ); ?></span></a></h1><?php
 
 		} else {
 
-			?><p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p><?php
+			?><p class="site-title"><a href="<?php echo esc_url( 'http://townandcountrybank.com/' ); ?>" rel="home" target="_blank"><img src="<?php echo esc_url( $logo ); ?>"><span class="screen-reader-text"><?php bloginfo( 'name' ); ?></span></a></p><?php
 
 		}
 

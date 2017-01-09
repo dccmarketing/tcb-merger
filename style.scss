@@ -1,7 +1,7 @@
 /*!
 Theme Name: Edge Merger
-Theme URI: http://underscores.me/
-Author: Chris Wilcoxson & Brian Armstrong
+Theme URI: http://theedgebank.com/
+Author: Chris Wilcoxson & Jen Stump
 Author URI: http://dccmarketing.com/
 Description: Custom WordPress theme for Edge Merger by DCC Marketing derived from _s by Automattic
 Version: 1.0.0
@@ -36,6 +36,7 @@ Media
 --------------------------------------------------------------*/
 @import "sass/variables-site/*";
 @import "sass/mixins/*";
+@import "sass/lib/*";
 
 /*--------------------------------------------------------------
 ## Reset

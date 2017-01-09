@@ -17,11 +17,6 @@ if ( ! function_exists( 'edge_merger_setup' ) ) :
 	 * as indicating support for post thumbnails.
 	 */
 	function edge_merger_setup() {
-		/*
-		 * Make theme available for translation.
-		 * Translations can be filed in the /languages/ directory.
-		 */
-		load_theme_textdomain( 'edge-merger', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -103,29 +98,9 @@ function edge_merger_content_width() {
 add_action( 'after_setup_theme', 'edge_merger_content_width', 0 );
 
 /**
- * Implement the Custom Header feature.
- */
-//require get_template_directory() . '/inc/custom-header.php';
-
-/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-require get_template_directory() . '/inc/jetpack.php';
-
-/**
- * Load Slushman Themekit
- */
-require get_template_directory() . '/inc/themekit.php';
 
 /**
  * Load Actions and Filters
@@ -138,8 +113,8 @@ require get_template_directory() . '/inc/actions-and-filters.php';
 require get_template_directory() . '/inc/themehooks.php';
 
 /**
- * Load Slushman Menukit
+ * Customizer additions.
  */
-require get_template_directory() . '/inc/menukit.php';
+require get_template_directory() . '/inc/customizer.php';
 
 

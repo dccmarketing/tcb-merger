@@ -2,47 +2,185 @@
 	display: block;
 }
 
-.hentry {
-	margin: 0 0 1.5em;
+.merger-home {
+	margin 		: 0;
+
+	@media only screen and (max-width: $size__max-width - 1) {
+		flex-wrap 	: wrap;
+	}
+
+	@media only screen and (min-width: $size__max-width) {
+		height 	: 636px;
+		position: relative;
+	}
 }
 
-.page-content,
-.entry-content,
-.entry-summary {
+.entry-content {
 	hyphens 	: auto;
-	margin 		: 1.5em 0 0;
+	padding 	: 1em;
 	word-wrap 	: break-word;
+
+	@media only screen and (min-width: $bp__headings2) {
+		font-size 	: 13px;
+		width 		: 50%;
+	}
+
+	@media only screen and (min-width: $size__max-width) {
+		bottom 		: 0;
+		font-size 	: 11.25px;
+		left 		: 72px;
+		padding 	: 1.5em;
+		position 	: absolute;
+		top 		: 0;
+		width 		: 530px;
+
+		.regular-content {
+			p:nth-child(2) {
+				width: 95%;
+			}
+
+			p:nth-child(3) {
+				width: 92.5%;
+			}
+
+			p:nth-child(4) {
+				width: 87.5%;
+			}
+		}
+	}
+
+	.bold-content {
+		font-weight: 700;
+	}
+
+	/* .pen {
+		@media only screen and (min-width: $size__max-width) {
+			float 			: right;
+			height 			: 350px;
+			shape-outside 	: polygon(162px -40px, 110px 0, 0 325px);
+			width 			: 90px;
+		}
+	} */
+
+	.bartlett {
+		height 	: 137px;
+		width 	: 119px;
+	}
+
+	.signature {
+		height 	: 64px;
+		width 	: 200px;
+	}
 }
 
 .page-links {
-	clear: both;
-	margin: 0 0 1.5em;
+	clear 	: both;
+	margin 	: 0 0 1.5em;
 }
 
 .site-content {
-	margin 		: 0 auto $size__default-bot-marg;
-	max-width 	: $size__max-width;
-	overflow 	: auto;
-	width 		: 100%;
+	background-color: $light;
+	width 			: 100%;
 }
 
 .content-area {
-	float 		: left;
-	overflow 	: auto;
-	padding 	: 1em;
-	width 		: 100%;
+	margin 				: 0 auto;
+	max-width 			: $size__max-width;
+	position 			: relative;
+	width 				: 100%;
 
-	@media only screen and (min-width: $bp__tablet) {
-		&.content-sidebar {
-			float 	: left;
-			margin 	: 0 2.5% 0 0;
-			width 	: 70%;
+	@media only screen and (min-width: $size__max-width) {
+		background-image 	: url( 'images/content-bg.jpg' );
+		background-repeat	: no-repeat;
+	}
+}
+
+.site {
+	background-image: url( 'images/wood-bg.jpg' );
+	padding-bottom 	: 3em;
+}
+
+.entry-buttons {
+	margin 	: 0 auto;
+	padding : 0 3em;
+
+	@media only screen and (min-width: $bp__tablet) and (max-width: $size__max-width - 1) {
+		align-content 	: center;
+		background-image: url( 'images/darkwood2.jpg' );
+		display 		: flex;
+		flex-wrap 		: wrap;
+		padding 		: 0;
+		width 			: 100%;
+	}
+
+	@media only screen and (min-width: $bp__headings2) {
+		width 			: 50%;
+	}
+
+	@media only screen and (min-width: $size__max-width) {
+		bottom 			: 0;
+		padding 		: 17.5% 0 0;
+		position 		: absolute;
+		right 			: 87px;
+		text-align 		: center;
+		top 			: 0;
+		width 			: auto;
+	}
+
+	.btn {
+		background-color: $maroon;
+		font-size 		: 20px;
+		height 			: 80px;
+		margin 			: 2em auto;
+		max-width 		: 290px;
+		position 		: relative;
+
+		@media only screen and (min-width: 425px) {
+			font-size: 25px;
 		}
 
-		&.sidebar-content {
-			float 	: right;
-			margin 	: 0 0 0 2.5%;
-			width 	: 70%;
+		@media only screen and (min-width: $bp__tablet) {
+			box-shadow 		: 10px 8px 10px $dark;
+		}
+
+		&:before,
+		&:after {
+			border 			: 40px solid $maroon;
+			content 		: "";
+			display 		: block;
+			height 			: 0;
+			position 		: absolute;
+			top 			: 0;
+			width 			: 0;
+		}
+
+		&:before {
+			border-left-color 	: transparent;
+			border-right-width 	: 3px;
+			left 				: -40px;
+		}
+
+		&:after {
+			border-bottom-color : transparent;
+			border-left-width 	: 35px;
+			border-right-width 	: 0;
+			border-top-color 	: transparent;
+			right 				: -34px;
+		}
+
+		a {
+			color 			: $light;
+			display 		: block;
+			line-height 	: 1.2;
+			padding 		: 1em 0.5em;
+			text-decoration : none;
+			z-index 		: 2;
+			@extend %vertcenter;
+		}
+
+		.dashicons-arrow-right {
+			font-size 	: 2.1em;
+			margin-top 	: -9px;
 		}
 	}
 }

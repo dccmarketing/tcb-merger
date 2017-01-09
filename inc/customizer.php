@@ -1,6 +1,6 @@
 <?php
 /**
- * Edge Merger Customizer
+ * Replace With Theme Name Customizer
  *
  * Contains methods for customizing the theme customization screen.
  *
@@ -38,7 +38,7 @@ function edge_merger_register_panels( $wp_customize ) {
 	$wp_customize->add_panel( 'theme_options',
 		array(
 			'capability'  		=> 'edit_theme_options',
-			'description'  		=> esc_html__( 'Options for Edge Merger', 'edge-merger' ),
+			'description'  		=> esc_html__( 'Options for Replace With Theme Name', 'edge-merger' ),
 			'priority'  		=> 10,
 			'theme_supports'  	=> '',
 			'title'  			=> esc_html__( 'Theme Options', 'edge-merger' ),
@@ -50,7 +50,7 @@ function edge_merger_register_panels( $wp_customize ) {
 	$wp_customize->add_panel( 'theme_options',
 		array(
 			'capability'  		=> 'edit_theme_options',
-			'description'  		=> esc_html__( 'Options for Edge Merger', 'edge-merger' ),
+			'description'  		=> esc_html__( 'Options for Replace With Theme Name', 'edge-merger' ),
 			'priority'  		=> 10,
 			'theme_supports'  	=> '',
 			'title'  			=> esc_html__( 'Theme Options', 'edge-merger' ),
@@ -84,7 +84,16 @@ function edge_merger_register_panels( $wp_customize ) {
  */
 function edge_merger_register_sections( $wp_customize ) {
 
-
+	// Arrows
+	$wp_customize->add_section( 'home',
+		array(
+			'capability' 	=> 'edit_theme_options',
+			'description' 	=> esc_html__( '', 'edge-merger' ),
+			'panel' 		=> 'theme_options',
+			'priority' 		=> 10,
+			'title' 		=> esc_html__( 'Homepage', 'edge-merger' )
+		)
+	);
 
 	/*
 	// New Section
@@ -148,6 +157,129 @@ function edge_merger_register_fields( $wp_customize ) {
 		)
 	);
 	$wp_customize->get_setting( 'tag_manager' )->transport = 'postMessage';
+
+
+
+
+	// Textarea Field
+	$wp_customize->add_setting(
+		'bold_content',
+		array(
+			'default'  	=> '',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'bold_content',
+		array(
+			'description' 	=> esc_html__( '', 'edge-merger' ),
+			'label' => esc_html__( 'Bold Content', 'edge-merger' ),
+			'priority' => 10,
+			'section' => 'home',
+			'settings' => 'bold_content',
+			'type' => 'textarea'
+		)
+	);
+	$wp_customize->get_setting( 'bold_content' )->transport = 'postMessage';
+
+
+
+
+
+
+	// Text Field
+	$wp_customize->add_setting(
+		'arrow1_link_text',
+		array(
+			'default'  	=> '',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'arrow1_link_text',
+		array(
+			'description' 	=> esc_html__( '', 'edge-merger' ),
+			'label'  	=> esc_html__( 'Arrow 1 Text', 'edge-merger' ),
+			'priority' => 10,
+			'section'  	=> 'home',
+			'settings' 	=> 'arrow1_link_text',
+			'type' 		=> 'text'
+		)
+	);
+	$wp_customize->get_setting( 'arrow1_link_text' )->transport = 'postMessage';
+
+
+	// URL Field
+	$wp_customize->add_setting(
+		'arrow1_url',
+		array(
+			'default'  	=> '',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'arrow1_url',
+		array(
+			'description' 	=> esc_html__( '', 'edge-merger' ),
+			'label' => esc_html__( 'Arrow 1 URL', 'edge-merger' ),
+			'priority' => 10,
+			'section' => 'home',
+			'settings' => 'arrow1_url',
+			'type' => 'url'
+		)
+	);
+	$wp_customize->get_setting( 'arrow1_url' )->transport = 'postMessage';
+
+
+
+
+
+	// Text Field
+	$wp_customize->add_setting(
+		'arrow2_link_text',
+		array(
+			'default'  	=> '',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'arrow2_link_text',
+		array(
+			'description' 	=> esc_html__( '', 'edge-merger' ),
+			'label'  	=> esc_html__( 'Arrow 2 Text', 'edge-merger' ),
+			'priority' => 10,
+			'section'  	=> 'home',
+			'settings' 	=> 'arrow2_link_text',
+			'type' 		=> 'text'
+		)
+	);
+	$wp_customize->get_setting( 'arrow2_link_text' )->transport = 'postMessage';
+
+
+	// URL Field
+	$wp_customize->add_setting(
+		'arrow2_url',
+		array(
+			'default'  	=> '',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'arrow2_url',
+		array(
+			'description' 	=> esc_html__( '', 'edge-merger' ),
+			'label' => esc_html__( 'Arrow 2 URL', 'edge-merger' ),
+			'priority' => 10,
+			'section' => 'home',
+			'settings' => 'arrow2_url',
+			'type' => 'url'
+		)
+	);
+	$wp_customize->get_setting( 'arrow2_url' )->transport = 'postMessage';
+
+
+
+
 
 
 

@@ -1,17 +1,33 @@
 .site-footer {
-	float 		: left;
-	width 		: 100%;
+	background-color: $tan;
+	box-shadow 		: -1px -1px 30px $dark;
+	font-family 	: sans-serif;
+	font-size 		: 12px;
+	position 		: relative;
+	width 			: 100%;
+	z-index 		: 1;
+
+	.addresses div {
+		margin: 0 3em 1em 0;
+	}
+
+	p {
+		margin: 0 0 1em;
+	}
 }
 
 .wrap-footer {
-	overflow 	: auto;
-	padding 	: 1em;
-
+	overflow 		: auto;
+	padding 		: 1em;
 }
 
 .site-info {
-	float 		: left;
 	overflow 	: auto;
-	text-align: center;
 	width 		: 100%;
+}
+
+.fdic {
+	@media only screen and (min-width: $bp__tablet) {
+		width: 12.5%;
+	}
 }

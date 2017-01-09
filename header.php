@@ -69,7 +69,7 @@ do_action( 'tha_body_top' );
 		 * The header_content action hook
 		 *
 		 * @hooked 		site_title 			10
-		 * @hooked 		site_description 	15
+		 * @hooked 		merged_logos 		15
 		 */
 		do_action( 'edge_merger_header_content' );
 
@@ -94,7 +94,7 @@ do_action( 'tha_body_top' );
 	 */
 	do_action( 'tha_content_before' );
 
-	?><div id="content" class="site-content"><?php
+	?><div id="content" class="site-content row"><?php
 
 		/**
 		 * The tha_content_top action hook
